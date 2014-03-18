@@ -1,0 +1,6 @@
+#!/system/bin/sh 
+mount -o rw,remount /system
+chmod 777 /dev/snd/*;
+chown 0.0 /dev/snd/*;
+export AUDIODRIVER=alsa;
+mount -o ro,remount /system

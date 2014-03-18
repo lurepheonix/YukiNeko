@@ -1,0 +1,3 @@
+This is my firmware for PiPo M9 Pro - called YukiNeko.
+You could download the repository as zip and sign with zip archiver, then flash via CWM on any 4.4 (latest Kasty recommended, or mine FW).
+This repo always contains the latest FW available, not like the update.img does.
