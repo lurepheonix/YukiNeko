@@ -19,10 +19,10 @@
 <!-- hal LogCatBufferName radio  -->
 <!-- HAL essentials: Serial port, log, NMEA, IRM, NVRAM, LTO -->
 <hal 
-    acPortName="tcp:127.0.0.1:10001"
+    acPortName="tcp:/data/gps/brcm_gps_unix_socket"
     Log="LOGCAT"
     lBaudRate="115200"
-    cLogEnabled="true"
+    cLogEnabled="false"
     acLogDirectory="/data/gps/log"
     ltoFileName="lto.dat"
 
@@ -38,6 +38,18 @@
     SyncLto="true"
     acLtoDir="/data/gps/"      
 
+    arp-supl-enable="true"
+    arp-supl-cap-msb="true"
+    arp-supl-cap-msa="true"
+    arp-supl-cap-ecid="false"
+    arp-supl-use-apn="false"
+    acSuplServer="supl.google.com"
+    SuplPort="7276" 
+    ReAidingIntervalSec="1200"
+    SuplUT1Seconds="20"
+    SuplUT2Seconds="20"
+    SuplUT3Seconds="20"
+    SuplVersion="1"
 />
 
 
@@ -45,7 +57,7 @@
     LogPriMask="LOG_DEBUG"
     LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_RAWDATA | LOG_ASIC_IO"
     FrqPlan="FRQ_PLAN_26MHZ_2PPM"   
-    RfType="GL_RF_2076_BRCM" 
+    RfType="GL_RF_2076_BRCM_EXT_LNA" 
     DynMode="DYN_AUTOMATIC"
     PsfNotConnected="true"
 />
