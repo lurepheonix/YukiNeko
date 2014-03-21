@@ -1,3 +1,4 @@
 #!/system/bin/sh
-mount -o noatime,nodiratime,remount,rw,data=writeback,nobh,discard,barrier=0,commit=60,noauto_da_alloc,delalloc /cache /cache;
-mount -o noatime,nodiratime,remount,rw,data=writeback,hobh,discard,barrier=0,commit=60,noauto_da_alloc,delalloc /data /data;
+mount -o noatime,nodiratime,remount,rw,discard,barrier=0,commit=60,noauto_da_alloc /cache /cache;
+mount -o noatime,nodiratime,remount,rw,discard,barrier=0,commit=60,noauto_da_alloc /data /data;
+mount -o noatime,nodiratime,remount,rw,discard,barrier=0,commit=60,noauto_da_alloc /system /system;
