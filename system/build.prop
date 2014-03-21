@@ -217,8 +217,9 @@ ro.service.swiqi.supported=true
 persist.service.swiqi.enable=1
 
 #SELinux props
-#We do not need in enabled yet for more stability
-
+#I need it permissive
+ro.build.selinux=0
+ro.build.selinux.enforce=0
 
 #FOTA updates
 otaupdater.otaid=yukineko
