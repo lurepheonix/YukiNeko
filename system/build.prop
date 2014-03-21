@@ -216,6 +216,10 @@ ro.media.capture.flashIntensity=190
 ro.service.swiqi.supported=true
 persist.service.swiqi.enable=1
 
+#SELinux props
+#We do not need in enabled yet for more stability
+
+
 #FOTA updates
 otaupdater.otaid=yukineko
 otaupdater.otatime=20140318-2234
