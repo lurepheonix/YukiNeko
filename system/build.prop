@@ -64,10 +64,12 @@ ro.adb.secure=0
 # ADDITIONAL_BUILD_PROPERTIES
 #
 ro.com.android.dateformat=dd-MM-yyyy
-ro.config.ringtone=Ring_Synth_04.ogg
-ro.config.notification_sound=pixiedust.ogg
+ro.config.ringtone=MI.ogg
+ro.config.notification_sound=FadeIn.ogg
 ro.carrier=unknown
-ro.config.alarm_alert=Alarm_Classic.ogg
+ro.config.alarm_alert=GoodMorning.ogg
+ro.config.sms_received_sound=FadeIn.ogg
+ro.config.sms_delivered_sound=MessageComplete.ogg
 ro.rk.screenshot_enable=true
 ro.sf.lcdc_composer=1
 debug.hwui.render_dirty_regions=false
