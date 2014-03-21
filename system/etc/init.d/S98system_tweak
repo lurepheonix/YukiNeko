@@ -6,14 +6,14 @@ MMC=`ls -d /sys/block/mmc*`;
 avail_io=/sys/block/mmcblk0/queue/scheduler
 check=`cat $avail_io`
 
-echo "Applying NOOP as Scheduler..." >> $LOG
+#Applying NOOP as Scheduler
 for i in $STL $BML $MMC;
 do
 	echo "noop" > $i/queue/scheduler; 
 done;
 
 
-echo "Optimizing Non-Rotating Storage..." >> $LOG
+#Optimizing Non-Rotating Storage
 # Optimize non-rotating storage; 
 for i in $STL $BML $MMC;
 do
@@ -37,49 +37,19 @@ do
 		echo 1 > $i/queue/iosched/writes_starved;
 	fi;
 	
-echo "Disabling I/O Stats To Reduce Overhead..." >> $LOG
-#disable iostats to reduce overhead  # idea by kodos96 - thanks !
+#Disabling I/O Stats To Reduce Overhead
 	if [ -e $i/queue/iostats ];
 	then
 		echo "0" > $i/queue/iostats;
 	fi;
-
-echo "Optimizing Read_ahead..." >> $LOG
-# Optimize for read- & write-throughput; 
-# Optimize for readahead; 
-	if [ -e $i/queue/read_ahead_kb ];
-	then
-		echo "256" >  $i/queue/read_ahead_kb;
-	fi;
-	
 done;
-echo "Boosting R/W..." >> $LOG
-if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ];
-then
-    echo "2048" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
-fi;
-	
-if [ -e /sys/devices/virtual/bdi/179:8/read_ahead_kb ];
-  then
-    echo "2048" > /sys/devices/virtual/bdi/179:8/read_ahead_kb;
-fi;
+#Boosting R/W
+echo "4096" > /sys/devices/virtual/bdi/31:5/read_ahead_kb;
+echo "4096" > /sys/devices/virtual/bdi/31:6/read_ahead_kb;
+echo "2048" > /sys/devices/virtual/bdi/31:9/read_ahead_kb;
+echo "4096" > /sys/devices/virtual/bdi/31:10/read_ahead_kb;
 
-if [ -e /sys/devices/virtual/bdi/179:28/read_ahead_kb ];
-  then
-    echo "2048" > /sys/devices/virtual/bdi/179:28/read_ahead_kb;
-fi;
-
-if [ -e /sys/devices/virtual/bdi/179:33/read_ahead_kb ];
-  then
-    echo "2048" > /sys/devices/virtual/bdi/179:33/read_ahead_kb;
-fi;
-
-if [ -e /sys/devices/virtual/bdi/default/read_ahead_kb ];
-  then
-    echo "256" > /sys/devices/virtual/bdi/default/read_ahead_kb;
-fi;
-
-echo "Applying VM Settings..." >> $LOG
+#Applying VM Settings
 echo 3 > /proc/sys/vm/page-cluster;
 echo 3000 > /proc/sys/vm/dirty_expire_centisecs;
 echo 500 > /proc/sys/vm/dirty_writeback_centisecs;
@@ -95,7 +65,7 @@ echo "0" > /proc/sys/vm/laptop_mode;
 echo "0" > /proc/sys/vm/block_dump;
 echo "1" > /proc/sys/vm/oom_dump_tasks;
 
-echo "Applying Network Tweaks..." >> $LOG
+#Applying Network Tweaks
 echo "0" > /proc/sys/net/ipv4/tcp_timestamps;
 echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse;
 echo "1" > /proc/sys/net/ipv4/tcp_sack;
@@ -138,7 +108,7 @@ echo "20480" > /proc/sys/net/core/optmem_max;
 echo "2500" > /proc/sys/net/core/netdev_max_backlog;
 echo "50" > /proc/sys/net/unix/max_dgram_qlen;
 
-echo "Applying Kernel and FS Tweaks..." >> $LOG
+#Applying Kernel and FS Tweaks
 echo "500 512000 64 2048" > /proc/sys/kernel/sem;
 echo "268435456" > /proc/sys/kernel/shmmax;
 echo "2097152" > /proc/sys/kernel/shmall;
@@ -151,7 +121,7 @@ echo "5000" > /proc/sys/kernel/threads-max;
 echo "10" > /proc/sys/fs/lease-break-time;
 echo "65536" > /proc/sys/fs/file-max;
 
-echo "Cleaning Up Junk Files..." >> $LOG
+#Cleaning Up Junk Files...
 rm /data/local/*.apk
 rm /data/local/tmp/*.apk
 rm /data/*.log
