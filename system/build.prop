@@ -35,6 +35,7 @@ ro.rk.systembar.voiceicon=true
 rild.libpath=/system/lib/libril-rk29-dataonly.so
 rild.libargs=-d /dev/ttyACM0
 ro.audio.monitorOrientation=true
+persist.tegra.nvmmlite=1
 debug.nfc.fw_download=false
 debug.nfc.se=false
 ro.rksdk.version=RK30_ANDROID$(PLATFORM_VERSION)-SDK-v1.00.00 \

@@ -1,0 +1,16 @@
+#!/system/bin/sh
+# Script to initiate rngd at boot by Ryuinferno @ XDA 2013
+
+if pgrep qrngd > /dev/null; then
+  exit 1
+fi
+
+if [ -e /system/bin/qrngd -o -e /system/xbin/qrngd ]; then
+  exit
+fi
+
+rngd -t 2 -T 1 -s 256 --fill-watermark=80%
+sleep 2
+echo -8 > /proc/$(pgrep rngd)/oom_adj
+renice 5 `pidof rngd`
+

@@ -6,16 +6,13 @@ do
 	echo 1 > /sys/devices/system/cpu/cpu1/online;
 	echo 1 > /sys/devices/system/cpu/cpu2/online;
 	echo 1 > /sys/devices/system/cpu/cpu3/online;
-        echo 1 > /sys/class/rk291x_modem/modem_status;
         AWAKE=;
     fi;
     SLEEPING=`cat /sys/power/wait_for_fb_sleep`;
     if [ $SLEEPING = "sleeping" ]; then
         echo 0 > /sys/devices/system/cpu/cpu1/online;
         echo 0 > /sys/devices/system/cpu/cpu2/online;
-        echo 0 > /sys/devices/system/cpu/cpu3/online;
-	sleep 60;
-	echo 0 > /sys/class/rk291x_modem/modem_status;
+        echo 0 > /sys/devices/system/cpu/cpu3/online;;
         SLEEPING=;
     fi;    
 done &);
