@@ -1,4 +1,2 @@
 #!/system/bin/sh
-
-if [ "getprop ro.build.selinux" == "0" ]; then
-	setenforce 0
+setenforce 0
