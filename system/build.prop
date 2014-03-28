@@ -59,7 +59,7 @@ persist.sys.timezone=Europe/Moscow
 ro.product.usbfactory=rockchip_usb
 wifi.supplicant_scan_interval=180
 ro.sf.lcd_density=240
-ro.adb.secure =0
+ro.adb.secure=0
 
 #
 # ADDITIONAL_BUILD_PROPERTIES
@@ -72,12 +72,10 @@ ro.config.alarm_alert=GoodMorning.ogg
 ro.config.sms_received_sound=FadeIn.ogg
 ro.config.sms_delivered_sound=MessageComplete.ogg
 ro.rk.screenshot_enable=true
-persist.sys.ui.hw=true
 ro.config.facelock=enable_facelock
 persist.facelock.detect_cutoff=5000
 persist.facelock.recog_cutoff=5000
 ro.sf.lcdc_composer=1
-debug.hwui.render_dirty_regions=false
 keyguard.no_require_sim=true
 ro.com.android.dataroaming=true
 ril.function.dataonly=1
@@ -94,19 +92,19 @@ persist.sys.dalvik.vm.lib=libdvm.so
 net.bt.name=Android
 
 #Dalvik
-dalvik.vm.heapstartsize=5m
-dalvik.vm.heapgrowthlimit=128m
-dalvik.vm.heapsize=256m
-dalvik.vm.heapminfree=512k
+dalvik.vm.heapstartsize=1m
+dalvik.vm.heapgrowthlimit=80m
+dalvik.vm.heapsize=128m
+dalvik.vm.heapminfree=256k
 dalvik.vm.heapmaxfree=8m
 dalvik.vm.execution-mode=int:fast
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.checkjni=false
 dalvik.vm.verify_bytecode=false
-dalvik.vm.dexopt-flags=v=n,o=v
+dalvik.vm.dexopt-flags=v=n,m=a,o=v
 dalvik.vm.check-dex-sum=false
-dalvik.vm.lockprof.threshold=500
+dalvik.vm.lockprof.threshold=250
 dalvik.gc.type=precise
 dalvik.vm.jniopts=warnonly
 dalvik.vm.heaptargetutilization=0.75
@@ -119,7 +117,7 @@ ro.kernel.checkjni=1
 ro.config.nocheckin=0
 
 #GPU
-persist.sys.ui.hw=true
+persist.sys.ui.hw=1
 sys.gmali.performance=video
 debug.overlayui.enable=1
 debug.egl.profiler=1
@@ -127,6 +125,19 @@ hw3d.force=1
 hw2d.force=1
 force_hw_ui=true
 ro.config.disable.hw_accel=false
+ro.hwui.texture_cache_size=72
+ro.hwui.layer_cache_size=48
+ro.hwui.path_cache_size=16
+ro.hwui.shape_cache_size=4
+ro.hwui.gradient_cache_size=1
+ro.hwui.drop_shadow_cache_size=6
+ro.hwui.texture_cache_flush_rate=0.4
+ro.hwui.text_small_cache_width=1024
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_large_cache_height=1024
+ro.hwui.disable_scissor_opt=true
+debug.hwui.render_dirty_regions=true
 
 #ACID
 AUDIODRIVER=alsa
@@ -210,8 +221,7 @@ ro.min.fling_velocity=10000
 debug.kill_allocating_task=0
 ro.min_pointer_dur=1
 persist.sys.use_16bpp_alpha=1
-ro.config.nocheckin=1
-windowsmgr.max_events_per_sec=240
+windowsmgr.max_events_per_sec=500
 ro.config.hw_quickpoweron=true
 
 #Flash led
