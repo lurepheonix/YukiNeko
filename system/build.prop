@@ -117,7 +117,9 @@ ro.kernel.checkjni=1
 ro.config.nocheckin=0
 
 #GPU
-persist.sys.ui.hw=1
+debug.composition.type=gpu
+persist.sys.composition.type=gpu
+persist.sys.ui.hw=true
 sys.gmali.performance=video
 debug.overlayui.enable=1
 debug.egl.profiler=1
@@ -125,19 +127,7 @@ hw3d.force=1
 hw2d.force=1
 force_hw_ui=true
 ro.config.disable.hw_accel=false
-ro.hwui.texture_cache_size=72
-ro.hwui.layer_cache_size=48
-ro.hwui.path_cache_size=16
-ro.hwui.shape_cache_size=4
-ro.hwui.gradient_cache_size=1
-ro.hwui.drop_shadow_cache_size=6
-ro.hwui.texture_cache_flush_rate=0.4
-ro.hwui.text_small_cache_width=1024
-ro.hwui.text_small_cache_height=1024
-ro.hwui.text_large_cache_width=2048
-ro.hwui.text_large_cache_height=1024
-ro.hwui.disable_scissor_opt=true
-debug.hwui.render_dirty_regions=true
+debug.hwui.render_dirty_regions=false
 
 #ACID
 AUDIODRIVER=alsa
@@ -193,8 +183,6 @@ pm.sleep_mode=1
 ro.ril.disable.power.collapse=0
 persist.sys.shutdown.mode=hibernate
 dev.bootcomplete=0
-ro.config.hw_power_saving=true
-power.saving.mode=0
 
 #Photo&Video
 ro.media.dec.jpeg.memcap=8000000
@@ -212,7 +200,7 @@ media.stagefright.enable-record=true
 #Smooth work
 profiler.force_disable_err_rpt=1
 profiler.force_disable_ulog=1
-persist.sys.scrollingcache=4
+persist.sys.scrollingcache=20
 #still might be needed
 #logcat.live=disable
 touch.presure.scale=0.001
@@ -221,8 +209,7 @@ ro.min.fling_velocity=10000
 debug.kill_allocating_task=0
 ro.min_pointer_dur=1
 persist.sys.use_16bpp_alpha=1
-windowsmgr.max_events_per_sec=500
-ro.config.hw_quickpoweron=true
+windowsmgr.max_events_per_sec=150
 
 #Flash led
 ro.media.capture.flash=led 
@@ -241,5 +228,5 @@ ro.build.selinux.enforce=0
 
 #FOTA updates
 otaupdater.otaid=yukineko
-otaupdater.otatime=20140327-2142
+otaupdater.otatime=20140329-2019
 otaupdater.otaver=2.0
