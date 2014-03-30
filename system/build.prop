@@ -230,3 +230,6 @@ ro.build.selinux.enforce=0
 otaupdater.otaid=yukineko
 otaupdater.otatime=20140329-2019
 otaupdater.otaver=2.0
+
+#Root fix
+persist.sys.root_access=1
