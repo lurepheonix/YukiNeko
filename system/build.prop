@@ -22,7 +22,7 @@ ro.product.cpu.abi2=armeabi
 ro.product.manufacturer=samsung
 ro.product.locale.language=ru
 ro.product.locale.region=RU
-ro.wifi.channels=13,14
+ro.wifi.channels=14
 ro.board.platform=rk3188
 ro.build.product=lt01wifi
 ro.build.description=lt01wifiue-user 4.2.2 JDQ39 T310UEUAMH2 release-keys
@@ -119,7 +119,7 @@ ro.config.nocheckin=0
 #GPU
 debug.composition.type=gpu
 persist.sys.composition.type=gpu
-persist.sys.ui.hw=true
+persist.sys.ui.hw=1
 sys.gmali.performance=video
 debug.overlayui.enable=1
 debug.egl.profiler=1
@@ -199,16 +199,24 @@ media.stagefright.enable-record=true
 #Smooth work
 profiler.force_disable_err_rpt=1
 profiler.force_disable_ulog=1
-persist.sys.scrollingcache=20
+persist.sys.scrollingcache=2
 #still might be needed
 #logcat.live=disable
-touch.pressure.scale=0.001
 ro.max.fling_velocity=21000
 ro.min.fling_velocity=10000
 debug.kill_allocating_task=0
 ro.min_pointer_dur=1
 persist.sys.use_16bpp_alpha=1
-windowsmgr.max_events_per_sec=150
+windowsmgr.max_events_per_sec=260
+debug.performance.tuning=1
+view.scroll_friction=0.004
+touch.size.calibration=geometric
+touch.size.scale=100
+touch.pressure.calibration=amplitude
+touch.pressure.scale=0.1
+view.touch_slop=16
+view.minimum_fling_velocity=300
+debug.gr.swapinterval=0
 
 #Flash led
 ro.media.capture.flash=led 
@@ -232,3 +240,40 @@ otaupdater.otaver=2.0.2
 
 #Root fix
 persist.sys.root_access=1
+
+#Set Google DNS for network
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
+
+#Set ADB port
+service.adb.tcp.port=5555
+
+#OOM props
+# OOM MEM
+ro.FOREGROUND_APP_MEM=2048
+ro.VISIBLE_APP_MEM=3072
+ro.PERCEPTIBLE_APP_MEM=1024
+ro.HEAVY_WEIGHT_APP_MEM=10240
+ro.SECONDARY_SERVER_MEM=10240
+ro.BACKUP_APP_MEM=12288
+ro.HOME_APP_MEM=1024
+ro.HIDDEN_APP_MEM=12288
+ro.EMPTY_APP_MEM=16128
+# OOM ADJ
+ro.FOREGROUND_APP_ADJ=0
+ro.VISIBLE_APP_ADJ=3
+ro.PERCEPTIBLE_APP_ADJ=2
+ro.HEAVY_WEIGHT_APP_ADJ=4
+ro.SECONDARY_SERVER_ADJ=6
+ro.BACKUP_APP_ADJ=7
+ro.HOME_APP_ADJ=1
+ro.HIDDEN_APP_MIN_ADJ=9
+ro.EMPTY_APP_ADJ=15
+
+#Init.d
+sys.initd=1
+#Looped init.d
+sys.initd.loop=1
+#YukiNeko 3G modem switch
+#Uncomment to turn 3G modem off after a while
+#sys.yukineko.3gmodem=sleep

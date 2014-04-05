@@ -16,6 +16,7 @@ do
         SLEEPING=;
     fi;    
 done &);
+sleep 60s;
 
 
 
