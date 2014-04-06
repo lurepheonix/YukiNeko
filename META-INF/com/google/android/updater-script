@@ -1,5 +1,8 @@
-format("ext4", "EMMC", "/dev/block/mtd/by-name/system", "0", "/system");
-format("ext4", "EMMC", "/dev/block/mtd/by-name/cache", "0", "/cache");
+ui_print("Formatting system");
+format("ext4", "EMMC", "/dev/mtdblock10", "0", "/system");
+ui_print("Formatting cache");
+format("ext4", "EMMC", "/dev/block/mtdblock6", "0", "/cache");
+ui_print("Mounting partitions");
 run_program("/sbin/busybox", "mount", "/system");
 run_program("/sbin/busybox", "mount", "/data");
 ui_print("Unpacking system");
@@ -28,6 +31,7 @@ set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
 set_perm(0, 0, 06755, "/system/xbin/su");
 set_perm(0, 1000, 06755, "/system/bin/busybox");
 set_perm_recursive(0, 0, 0777, 0777, "/system/etc/init.d");
+set_perm_recursive(0, 0, 0777, 0777, "/system/etc/init.d.loop");
 set_perm(0, 0, 06755, "/system/bin/su");
 set_perm(0, 0, 06755, "/system/bin/.ext/.su");
 set_perm(0, 0, 06755, "/system/xbin/su");
