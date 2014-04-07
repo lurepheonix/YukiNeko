@@ -1,51 +1,152 @@
 #!/system/bin/sh
-STL=`ls -d /sys/block/stl*`;
-BML=`ls -d /sys/block/bml*`;
-MMC=`ls -d /sys/block/mmc*`;
-
-avail_io=/sys/block/mmcblk0/queue/scheduler
-check=`cat $avail_io`
-
-#Applying NOOP as Scheduler
-for i in $STL $BML $MMC;
-do
-	echo "noop" > $i/queue/scheduler; 
-done;
+echo "noop" > /sys/block/mtdblock6/queue/scheduler; 
+echo "noop" > /sys/block/mtdblock7/queue/scheduler; 
+echo "noop" > /sys/block/mtdblock8/queue/scheduler; 
+echo "noop" > /sys/block/mtdblock10/queue/scheduler;
+echo "noop" > /sys/block/mtdblock11/queue/scheduler;
 
 
 #Optimizing Non-Rotating Storage
 # Optimize non-rotating storage; 
-for i in $STL $BML $MMC;
-do
+#for mtdblock5
 	#IMPORTANT!
-	if [ -e $i/queue/rotational ]; 
+	if [ -e /sys/block/mtdblock5/queue/rotational ]; 
 	then
-		echo 0 > $i/queue/rotational; 
+		echo 0 > /sys/block/mtdblock5/queue/rotational; 
 	fi;
-	if [ -e $i/queue/nr_requests ];
+	if [ -e /sys/block/mtdblock5/queue/nr_requests ];
 	then
-		echo 8192 > $i/queue/nr_requests; # for starters: keep it sane
+		echo 8192 > /sys/block/mtdblock5/queue/nr_requests; # for starters: keep it sane
 	fi;
 	
 	# deadline/VR/SIO scheduler specific
-	if [ -e $i/queue/iosched/fifo_batch ];
+	if [ -e /sys/block/mtdblock5/queue/iosched/fifo_batch ];
 	then
-		echo 1 > $i/queue/iosched/fifo_batch;
+		echo 1 > /sys/block/mtdblock5/queue/iosched/fifo_batch;
 	fi;
-	if [ -e $i/queue/iosched/writes_starved ];
+	if [ -e /sys/block/mtdblock5/queue/iosched/writes_starved ];
 	then
-		echo 1 > $i/queue/iosched/writes_starved;
+		echo 1 > /sys/block/mtdblock5/queue/iosched/writes_starved;
 	fi;
 	
 #Disabling I/O Stats To Reduce Overhead
-	if [ -e $i/queue/iostats ];
+	if [ -e /sys/block/mtdblock5/queue/iostats ];
 	then
-		echo "0" > $i/queue/iostats;
+		echo "0" > /sys/block/mtdblock5/queue/iostats;
 	fi;
-done;
+
+#for mtdblock6
+	#IMPORTANT!
+	if [ -e /sys/block/mtdblock6/queue/rotational ]; 
+	then
+		echo 0 > /sys/block/mtdblock6/queue/rotational; 
+	fi;
+	if [ -e /sys/block/mtdblock6/queue/nr_requests ];
+	then
+		echo 8192 > /sys/block/mtdblock6/queue/nr_requests; # for starters: keep it sane
+	fi;
+	
+	# deadline/VR/SIO scheduler specific
+	if [ -e /sys/block/mtdblock6/queue/iosched/fifo_batch ];
+	then
+		echo 1 > /sys/block/mtdblock6/queue/iosched/fifo_batch;
+	fi;
+	if [ -e /sys/block/mtdblock6/queue/iosched/writes_starved ];
+	then
+		echo 1 > /sys/block/mtdblock6/queue/iosched/writes_starved;
+	fi;
+	
+#Disabling I/O Stats To Reduce Overhead
+	if [ -e /sys/block/mtdblock6/queue/iostats ];
+	then
+		echo "0" > /sys/block/mtdblock6/queue/iostats;
+	fi;
+
+#for mtdblock7
+	#IMPORTANT!
+	if [ -e /sys/block/mtdblock7/queue/rotational ]; 
+	then
+		echo 0 > /sys/block/mtdblock7/queue/rotational; 
+	fi;
+	if [ -e /sys/block/mtdblock7/queue/nr_requests ];
+	then
+		echo 8192 > /sys/block/mtdblock7/queue/nr_requests; # for starters: keep it sane
+	fi;
+	
+	# deadline/VR/SIO scheduler specific
+	if [ -e /sys/block/mtdblock7/queue/iosched/fifo_batch ];
+	then
+		echo 1 > /sys/block/mtdblock7/queue/iosched/fifo_batch;
+	fi;
+	if [ -e /sys/block/mtdblock7/queue/iosched/writes_starved ];
+	then
+		echo 1 > /sys/block/mtdblock7/queue/iosched/writes_starved;
+	fi;
+	
+#Disabling I/O Stats To Reduce Overhead
+	if [ -e /sys/block/mtdblock7/queue/iostats ];
+	then
+		echo "0" > /sys/block/mtdblock7/queue/iostats;
+	fi;
+
+#for mtdblock9
+	#IMPORTANT!
+	if [ -e /sys/block/mtdblock9/queue/rotational ]; 
+	then
+		echo 0 > /sys/block/mtdblock9/queue/rotational; 
+	fi;
+	if [ -e /sys/block/mtdblock9/queue/nr_requests ];
+	then
+		echo 8192 > /sys/block/mtdblock9/queue/nr_requests; # for starters: keep it sane
+	fi;
+	
+	# deadline/VR/SIO scheduler specific
+	if [ -e /sys/block/mtdblock9/queue/iosched/fifo_batch ];
+	then
+		echo 1 > /sys/block/mtdblock9/queue/iosched/fifo_batch;
+	fi;
+	if [ -e /sys/block/mtdblock9/queue/iosched/writes_starved ];
+	then
+		echo 1 > /sys/block/mtdblock9/queue/iosched/writes_starved;
+	fi;
+	
+#Disabling I/O Stats To Reduce Overhead
+	if [ -e /sys/block/mtdblock9/queue/iostats ];
+	then
+		echo "0" > /sys/block/mtdblock9/queue/iostats;
+	fi;
+
+#for mtdblock10
+	#IMPORTANT!
+	if [ -e /sys/block/mtdblock10/queue/rotational ]; 
+	then
+		echo 0 > /sys/block/mtdblock10/queue/rotational; 
+	fi;
+	if [ -e /sys/block/mtdblock10/queue/nr_requests ];
+	then
+		echo 8192 > /sys/block/mtdblock10/queue/nr_requests; # for starters: keep it sane
+	fi;
+	
+	# deadline/VR/SIO scheduler specific
+	if [ -e /sys/block/mtdblock10/queue/iosched/fifo_batch ];
+	then
+		echo 1 > /sys/block/mtdblock10/queue/iosched/fifo_batch;
+	fi;
+	if [ -e /sys/block/mtdblock10/queue/iosched/writes_starved ];
+	then
+		echo 1 > /sys/block/mtdblock10/queue/iosched/writes_starved;
+	fi;
+	
+#Disabling I/O Stats To Reduce Overhead
+	if [ -e /sys/block/mtdblock10/queue/iostats ];
+	then
+		echo "0" > /sys/block/mtdblock10/queue/iostats;
+	fi;
+
 #Boosting R/W
 echo "4096" > /sys/devices/virtual/bdi/31:5/read_ahead_kb;
 echo "4096" > /sys/devices/virtual/bdi/31:6/read_ahead_kb;
+echo "4096" > /sys/devices/virtual/bdi/31:7/read_ahead_kb;
 echo "2048" > /sys/devices/virtual/bdi/31:9/read_ahead_kb;
 echo "4096" > /sys/devices/virtual/bdi/31:10/read_ahead_kb;
 
@@ -109,12 +210,6 @@ echo "2500" > /proc/sys/net/core/netdev_max_backlog;
 echo "50" > /proc/sys/net/unix/max_dgram_qlen;
 
 #Applying Kernel and FS Tweaks
-echo "500 512000 64 2048" > /proc/sys/kernel/sem;
-echo "268435456" > /proc/sys/kernel/shmmax;
-echo "2097152" > /proc/sys/kernel/shmall;
-echo "4096" > /proc/sys/kernel/shmmni;
-echo "2048" > /proc/sys/kernel/msgmni;
-echo "64000" > /proc/sys/kernel/msgmax;
 echo "30" > /proc/sys/kernel/panic;
 echo "0" > /proc/sys/kernel/panic_on_oops;
 echo "5000" > /proc/sys/kernel/threads-max;
@@ -131,4 +226,5 @@ rm /cache/recovery/*
 rm /data/system/dropbox/*.txt
 rm /data/backup/pending/*.tmp
 rm /data/tombstones/*
-rm /sdcard/LOST.DIR/*
+rm /mnt/internal_sd/LOST.DIR/*
+rm /mnt/external_sd/LOST.DIR/*

@@ -8,7 +8,7 @@ do
     fi;
     SLEEPING=`cat /sys/power/wait_for_fb_sleep`;
     if [ $SLEEPING = "sleeping" ]; then
-	sleep 60s;
+	sleep 60;
 	echo 0 > /sys/class/rk291x_modem/modem_status;
         SLEEPING=;
     fi;    
