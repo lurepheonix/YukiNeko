@@ -1,5 +1,5 @@
 ui_print("Formatting system");
-format("ext4", "EMMC", "/dev/mtdblock10", "0", "/system");
+format("ext4", "EMMC", "/dev/block/mtdblock10", "0", "/system");
 ui_print("Formatting cache");
 format("ext4", "EMMC", "/dev/block/mtdblock6", "0", "/cache");
 ui_print("Mounting partitions");
