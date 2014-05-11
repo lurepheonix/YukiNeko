@@ -1,10 +1,8 @@
 #!/system/bin/sh
 
 #add ko modules for VPN support
-    insmod /system/lib/modules/tun.ko
     insmod /system/lib/modules/auth_rpcgss.ko
     insmod /system/lib/modules/cifs.ko
     insmod /system/lib/modules/lockd.ko
     insmod /system/lib/modules/md4.ko
     insmod /system/lib/modules/sunrpc.ko
-    insmod /system/lib/modules/nfs.ko     
