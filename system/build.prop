@@ -236,7 +236,7 @@ ro.build.selinux.enforce=0
 
 #FOTA updates
 otaupdater.otaid=yukineko
-otaupdater.otatime=20140508-0001
+otaupdater.otatime=20140511-1512
 otaupdater.otaver=2.3
 
 #Root fix
