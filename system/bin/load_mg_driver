@@ -1,8 +1,0 @@
-#!/system/bin/sh
-insmod /system/lib/modules/mgscc.ko
-insmod /system/lib/modules/mgscsi.ko
-chown root.icx_mg /dev/mgscc
-chmod 660 /dev/mgscc
-chown root.icx_mg /dev/mgscsi
-chmod 660 /dev/mgscsi
-/system/bin/mgscsi_init
